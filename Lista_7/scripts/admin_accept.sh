@@ -1,0 +1,1 @@
+curl --header "Content-Type: application/json" -H "Authorization: jwt $1"  --request POST   --data "{\"id\":\"$2\"}"   https://www.example.org/api/admin/accept --cacert ../certs/ca.cer --key ../certs/client.key --cert ../certs/client.cer

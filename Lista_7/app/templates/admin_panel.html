@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% autoescape false %}
+<script>
+    async function accept(id){
+        const x = await fetch("/accept", {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({transfer: id})
+        });
+        if (x.status == 200){
+            document.getElementById(String(id)).innerHTML = '<button type="button" class="btn btn-success" disabled>Zatwierdzony</button>'
+        }
+        else
+            alert("Coś poszło nie tak")
+    }
+
+</script>
+    {% if transfers %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kwota</th>
+              <th>Nazwa odbiorcy</th>
+              <th>Konto odbiorcy</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for t in transfers %}
+              {% if t.confirmed != 1 %}
+            <tr>
+              <td>{{ t.id }}</td>
+              <td>{{ t.sum }}</td>
+              <td>{{ t.recipent_name }}</td>
+              <td>{{ t.recipent_account }}</td>
+              <td id="{{ t.id }}"><button class="btn btn-outline-success" onclick="accept({{ t.id }})">Zatwierdź</button></td>
+            </tr>
+              {% endif %}
+              {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div>Brak historii przelewów do pokazania</div>
+    {% endif %}
+{% endautoescape %}
+
+
+{% endblock %}

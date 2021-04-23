@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <h5>✓ Przelew przeprowadzony pomyślnie</h5>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Odbiorca:</b> {{receiver}}</li>
+        <li class="list-group-item"><b>Numer konta:</b> {{account}}</li>
+        <li class="list-group-item"><b>Kwota:</b> {{sum}}</li>
+    </ul>
+{% endblock %}

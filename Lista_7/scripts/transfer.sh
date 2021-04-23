@@ -1,0 +1,1 @@
+curl --header "Content-Type: application/json" -H "Authorization: jwt $1"  --request POST   --data "{\"sum\":\"$4\", \"account\":\"$2\", \"name\": \"$3\"}"   https://www.example.org/api/transfer --cacert ../certs/ca.cer --key ../certs/client.key --cert ../certs/client.cer

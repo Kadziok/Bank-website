@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ url_for('static', filename='icon.png')}}">
+
+    <title>Mój Bank - logowanie</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='signin.css')}}" rel="stylesheet">
+  <script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script></head>
+
+<body class="text-center">
+    <form class="form-signin" action="" method="post" novalidate>
+        <img class="mb-4" src="{{ url_for('static', filename='icon.png')}}" alt="" width="128" height="128">
+    <h1 class="h1 mb-3 font-weight-normal">Mój Bank</h1><hr/>
+      <h1 class="h3 mb-3 font-weight-normal">Rejestracja</h1>
+      {{ form.hidden_tag() }}
+      <label for="username" class="sr-only">Login</label>
+      <input id="username" name="username" class="form-control" placeholder="Login" required="" autofocus="">
+      {% for error in form.username.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" required="" autofocus="">
+      {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+      <label for="password" class="sr-only">Hasło</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Hasło" required="">
+      {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+      <label for="password2" class="sr-only">Powtórz hasło</label>
+      <input type="password" id="password2" name="password2" class="form-control" placeholder="Powtórz hasło" required="">
+      {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit" name="submit" value="Register">Zarejestruj</button>
+      <br />
+      <a class="mylink" href="{{ url_for('login') }}">Zaloguj się</a> | 
+      <a class="mylink" href="{{ url_for('forgot') }}">Resetuj hasło</a>
+    </form>
+  
+
+</body></html>  

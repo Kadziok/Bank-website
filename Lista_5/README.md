@@ -1,0 +1,1 @@
+## Dokładny opis funkcjonalności znajduje się w pliku labor5.pdf.

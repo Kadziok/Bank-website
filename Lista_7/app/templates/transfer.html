@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#send").click(function(){
+    console.log("dlugitekst");
+    var http = new XMLHttpRequest();
+    http.open("POST", "/new_transfer", true);
+    http.setRequestHeader("Content-type","application/json");
+    var data = JSON.stringify({
+        "receiver": document.getElementById("receiver").value,
+        "account": document.getElementById("account").value,
+        "sum": document.getElementById("sum").value});
+    http.send(data);
+    http.onload = function() {
+        $("#test").html(http.responseText);
+    }
+  });
+});
+$(document).ready(function(){
+  $("#accept").click(function(){
+    alert("ABC");
+    var http = new XMLHttpRequest();
+    http.open("POST", "/transfer_accepted", true);
+    http.setRequestHeader("Content-type","application/json");
+    var data = JSON.stringify({
+        "accept": "accepted"});
+    http.send(data);
+    http.onload = function() {
+        $("#test").html(http.responseText);
+    }
+  });
+});
+function hello(){
+  $(document).ready(function(){
+    alert("ABC");
+    var http = new XMLHttpRequest();
+    http.open("POST", "/transfer_accepted", true);
+    http.setRequestHeader("Content-type","application/json");
+    var data = JSON.stringify({
+        "accept": "accepted"});
+    http.send(data);
+    http.onload = function() {
+        $("#test").html(http.responseText);
+    }
+});
+}
+</script>
+{% endblock %}
+{% block content %}
+    <h3> Nowy przelew </h3> <br />
+    <div id="test" class="col-xs-5 col-lg-5 col-md-5 col-xl-5">
+      <h5>Odbiorca</h5>
+      <input id="receiver" name="receiver" class="form-control" required="" autofocus="">
+      <h5>Numer konta</h5>
+      <input id="account" name="account" class="form-control" required="" autofocus="">
+      <h5>Kwota</h5>
+      <input id="sum" name="sum" class="form-control" required="" autofocus="">
+      <br />
+      <button class="btn btn-lg btn-primary btn-block" name="send" id="send">Zatwierdź</button>
+    </div>
+{% endblock %}

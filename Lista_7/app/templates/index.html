@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if transfers %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Kwota</th>
+              <th>Nazwa odbiorcy</th>
+              <th>Konto odbiorcy</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for t in transfers %}
+            <tr>
+              <td>{{ t.sum }}</td>
+              <td>{{ t.recipent_name }}</td>
+              <td>{{ t.recipent_account }}</td>
+              {% if t.confirmed == 1 or t.confirmed == '1' %}
+              <td>Zrealizowany</td>
+              {% else %}
+              <td>Oczekujący</td>
+              {% endif %}
+            </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div>Brak historii przelewów do pokazania</div>
+    {% endif %}
+{% endblock %}

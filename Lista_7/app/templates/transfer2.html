@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3> Nowy przelew </h3> <br />
+    <form class="form-signin col-xs-5 col-lg-5 col-md-5 col-xl-5" action="" method="post" id="transfer-form" novalidate>
+      {{ form.hidden_tag() }}
+      <h5>Odbiorca</h5>
+      <input id="reciever" name="receiver" class="form-control" required="" autofocus="">
+      <h5>Numer konta</h5>
+      <input id="account" name="account" class="form-control" required="">
+      <h5>Kwota</h5>
+      <input id="sum" name="sum" class="form-control" required="">
+      <br />
+      <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit" name="submit" value="Sign in">Zatwierdź</button>
+    </form>
+
+{% endblock %}
